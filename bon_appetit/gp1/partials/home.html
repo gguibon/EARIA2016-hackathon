@@ -1,0 +1,55 @@
+<div class="section">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12" ng-show="step==0">
+                
+                <img class="img-responsive img-home-portfolio" style="margin: 0 auto;" src="img/Preloader_10.gif">    
+            </div>
+
+            <div class="col-lg-12" ng-show="step!=0 && loading">
+                
+                <img class="img-responsive img-home-portfolio" style="margin: 0 auto;" src="img/Preloader_8.gif">    
+            </div>
+
+            <div class="col-lg-12 text-center" ng-show="!loading">
+                <h2>
+                    <span ng-repeat="t in title track by $index" class="label label-default">{{t}}&nbsp;</span>
+                
+                </h2>
+                <hr>
+            </div>
+
+            <div ng-repeat="result in results" class="col-lg-4 col-md-4 col-sm-6" >
+                <a href="#" ng-click="clickEvent(result.words)">
+                    <h4>{{result.words}}</h4>
+                    <img class="img-responsive img-home-portfolio" src="{{result.image}}" ng-show="result.image != null">
+                    <img class="img-responsive img-home-portfolio" src="img/empty.png" ng-show="result.image == null">
+                </a>
+            </div>
+
+
+            <div class="col-lg-4 col-md-4 col-sm-6" ng-show="!init && !loading">
+                <br><br>
+                <a href="#" ng-click="clickInit()">
+                    <img class="img-responsive img-home-portfolio" style="width:100px" src="img/refresh.png">
+                </a>
+            </div>
+            
+            <div class="col-lg-12">
+                <div ng-repeat="document in documents">
+                    <a href="{{document.link}}" _blanck="target">
+                        <h4>>> {{document.idDoc}}</h4>
+                    </a>
+                    <div ng-repeat="word in document.words">
+                        <span>{{word[1][0]}} ({{word[0]}})</span>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
